@@ -23,7 +23,7 @@ void ListaAlunoInsere (ListaAluno * this, Aluno * arg ) {
 	nodeAluno * novoNode;
 	novoNode = malloc( sizeof(nodeAluno) );
 	if (novoNode == NULL) {
-		printf("->  ERRO: o sistema encontrou um problema! (Falha em alocação de memoria).\n");
+		printf("ERRO: o sistema encontrou um problema! (Falha em alocação de memoria).\n");
 		abort();
 	}
 	
@@ -45,7 +45,7 @@ void ListaAlunoRemove (ListaAluno * this, Aluno * arg ) {
 
 	// Caso a lista esteja vazia
 	if ( ListaAlunoEstaVazia(this) ) {
-		printf("\nOperacao invalida. Nenhum aluno esta cadastrado!\n\n");
+		printf("\n  -> Operacao invalida. Nenhum aluno esta cadastrado!\n\n");
 		return;
 	}
 

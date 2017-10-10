@@ -19,11 +19,11 @@ void PrintaNUSPAluno ( Aluno * this ) {
 
 void PrintaMensagens ( Aluno * this ) {
 
-	printf("\n->  Todas as mensagens nao lidas do aluno %s:\n\n", this->Nome );
+	printf("\n ->  Todas as mensagens nao lidas do aluno %s:\n\n", this->Nome );
 
 	string printa = malloc( 100 );
 	if (printa == NULL) {
-		printf("->  ERRO: o sistema encontrou um problema (falha em alocação de memoria)\n");
+		printf("ERRO: o sistema encontrou um problema (falha em alocação de memoria)\n");
 		abort();
 	}
 

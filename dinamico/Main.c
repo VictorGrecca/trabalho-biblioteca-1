@@ -19,7 +19,7 @@ int main() {
 	ListaLivro* Biblioteca;
 	Biblioteca = malloc( sizeof(ListaLivro*) );
 	if (Biblioteca == NULL) {
-		printf("->  ERRO: o sistema encontrou um problema! (Falha em alocação de memoria).\n");
+		printf("ERRO: o sistema encontrou um problema! (Falha em alocação de memoria).\n");
 		abort();
 	}
 	InicializaBiblio( Biblioteca );
@@ -27,7 +27,7 @@ int main() {
 	ListaAluno* Alunos;
 	Alunos = malloc( sizeof(ListaAluno*) );
 	if (Alunos == NULL) {
-		printf("->  ERRO: o sistema encontrou um problema! (Falha em alocação de memoria).\n");
+		printf("ERRO: o sistema encontrou um problema! (Falha em alocação de memoria).\n");
 		abort();
 	}
 	InicializaAlunos( Alunos );

@@ -13,7 +13,7 @@ string StringLe() {
 	string texto;
 	texto = malloc( 100 ); // Alocacao de 100 bytes (100 chars) para todas as strings do codigo
 	if (texto == NULL) {
-		printf("->  ERRO: o sistema encontrou um problema! (Falha em alocação de memoria).\n");
+		printf("ERRO: o sistema encontrou um problema! (Falha em alocação de memoria).\n");
 		abort();
 	}
 

@@ -39,7 +39,7 @@ void PilhaMsgPush( PilhaMsg * this, string msg ) {
 
 	this->Itens = (string*) realloc( this->Itens, this->Top+1 * sizeof(string) );
 	if (this->Itens == NULL) {
-			printf("->  ERRO: o sistema encontrou um problema! (Falha em alocação de memoria).\n");
+			printf("ERRO: o sistema encontrou um problema! (Falha em alocação de memoria).\n");
 			abort();
 	}
 
@@ -60,7 +60,7 @@ string PilhaMsgPop( PilhaMsg * this ) {
 		// Diminui o tamanho da pilha
 		this->Itens = realloc( this->Itens, this->Top+1 * sizeof(string) );
 		if (this->Itens == NULL) {
-			printf("->  ERRO: o sistema encontrou um problema! (Falha em alocação de memoria).\n");
+			printf("ERRO: o sistema encontrou um problema! (Falha em alocação de memoria).\n");
 			abort();
 		}
 		return temp;

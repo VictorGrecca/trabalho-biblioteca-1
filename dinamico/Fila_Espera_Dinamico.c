@@ -23,7 +23,7 @@ void FilaEsperaInsere (FilaEspera * this, Aluno * arg ) {
 	nodeFila * novoNode;
 	novoNode = malloc( sizeof(nodeFila) );
 	if (novoNode == NULL) {
-		printf("->  ERRO: o sistema encontrou um problema! (Falha em alocação de memoria).\n");
+		printf("ERRO: o sistema encontrou um problema! (Falha em alocação de memoria).\n");
 		abort();
 	}
 

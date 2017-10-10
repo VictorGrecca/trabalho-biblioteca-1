@@ -23,7 +23,7 @@ void ListaLivroInsere (ListaLivro * this, Livro * arg ) {
 	nodeLivro * novoNode;
 	novoNode = malloc( sizeof(nodeLivro) );
 	if (novoNode == NULL) {
-		printf("->  ERRO: o sistema encontrou um problema! (Falha em alocação de memoria).\n");
+		printf("ERRO: o sistema encontrou um problema! (Falha em alocação de memoria).\n");
 		abort();
 	}
 
@@ -45,7 +45,7 @@ void ListaLivroRemove (ListaLivro * this, Livro * arg ) {
 
 	// Caso a lista esteja vazia
 	if ( ListaLivroEstaVazia(this) ) {
-		printf("\nOperacao invalida. A biblioteca esta vazia!\n\n");
+		printf("\n  -> Operacao invalida. A biblioteca esta vazia!\n\n");
 		return;
 	}
 
