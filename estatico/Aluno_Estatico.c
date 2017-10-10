@@ -19,7 +19,7 @@ void PrintaNUSPAluno ( Aluno * this ) {
 
 void PrintaMensagens ( Aluno * this ) {
 
-	printf("\n->  Todas as mensagens nao lidas do aluno %s:\n\n", this->Nome );
+	printf("\n  -> Todas as mensagens nao lidas do aluno %s:\n\n", this->Nome );
 
 	// Popa e printa todas as mensagens da pilha do aluno
 	

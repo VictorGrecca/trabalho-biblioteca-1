@@ -15,8 +15,8 @@ void InicializaBiblio ( ListaLivro* biblio ) {
 
 void LivroCadastra( ListaLivro* biblio ) {
 
-	printf("->  Cadastramento de um livro novo.\n");
-	printf("->  Atencao: para adicionar uma copia de um livro ja existente, tenha certeza de digitar o seu titulo exatemente como esta cadastrado! Pressione ENTER para continuar.");
+	printf("  -> Cadastramento de um livro novo.\n");
+	printf("  -> Atencao: para adicionar uma copia de um livro ja existente, tenha certeza de digitar o seu titulo exatemente como esta cadastrado! Pressione ENTER para continuar.");
 	EsperaEnter();
 
 	string TituloAux;
@@ -31,7 +31,7 @@ void LivroCadastra( ListaLivro* biblio ) {
 		int i;
 		for ( i = biblio->Primeiro ; i != -1 ; i = biblio->Vetor[i].Proximo ) {
 			if ( !strcmp( biblio->Vetor[i].Valor.Titulo, TituloAux ) ) {
-				printf("->  O livro %s ja esta cadastrado. Uma copia sera adicionada a biblioteca. Pressione ENTER para continuar.", TituloAux );
+				printf("  -> O livro %s ja esta cadastrado. Uma copia sera adicionada a biblioteca. Pressione ENTER para continuar.", TituloAux );
 				EsperaEnter();
 				biblio->Vetor[i].Valor.Qnt++;
 				return;
@@ -62,18 +62,18 @@ void LivroCadastra( ListaLivro* biblio ) {
 	ListaLivroInsere(biblio, TituloAux, AutorAux, EditoraAux, IsbnAux, AnoAux, &erro);
 	
 	if( erro ) {
-		printf("->  Falha no cadastramento de livro! A biblioteca esta cheia. Pressione ENTER para continuar.");
+		printf("\n  -> Falha no cadastramento de livro! A biblioteca esta cheia. Pressione ENTER para continuar.");
 		EsperaEnter();
 	}
 	else {
-		printf("->  Cadastramento de livro concluido com sucesso. Pressione ENTER para continuar.");
+		printf("\n  -> Cadastramento de livro concluido com sucesso. Pressione ENTER para continuar.");
 		EsperaEnter();
 	}
 }
 
 void LivroRemove( ListaLivro* biblio ) {
 	
-	printf("->  Remocao de um livro. Pressione ENTER para continuar.");
+	printf("  -> Remocao de um livro. Pressione ENTER para continuar.");
 	EsperaEnter();
 
 	// Procura o livro a ser removido
@@ -83,7 +83,7 @@ void LivroRemove( ListaLivro* biblio ) {
 	printf("\n");
 
 	if (erroBusca) {	// Caso a busca falhe
-		printf("->  Falha na remocao do livro da biblioteca. Pressione ENTER para continuar.");
+		printf("  -> Falha na remocao do livro da biblioteca. Pressione ENTER para continuar.");
 		EsperaEnter();
 	}
 	else {		// Caso o livro seja encontrado
@@ -92,11 +92,11 @@ void LivroRemove( ListaLivro* biblio ) {
 		ListaLivroRemove ( biblio, indice, &erroRemove );
 	
 		if (erroRemove) {
-			printf("->  Falha na remocao do livro da biblioteca. A biblioteca esta vazia. Pressione ENTER para continuar.");
+			printf("  -> Falha na remocao do livro da biblioteca. A biblioteca esta vazia. Pressione ENTER para continuar.");
 			EsperaEnter();
 		}
 		else {
-			printf("->  Livro removido da biblioteca com sucesso. Pressione ENTER para continuar.");
+			printf("  -> Livro removido da biblioteca com sucesso. Pressione ENTER para continuar.");
 			EsperaEnter();
 		}
 	}
@@ -104,7 +104,7 @@ void LivroRemove( ListaLivro* biblio ) {
 
 void LivroRetira( ListaLivro* biblio, ListaAluno* alunos ) {
 	
-	printf("->  Locacao de Livro. E preciso o titulo do livro a ser locado e, depois, o Numero USP do aluno que o locara. Pressione ENTER para continuar.");
+	printf("  -> Locacao de Livro. E preciso o titulo do livro a ser locado e, depois, o Numero USP do aluno que o locara. Pressione ENTER para continuar.");
 	EsperaEnter();
 
 	// Variavel para guardar se o aluno sera inserido na fila de espera para o livro ou nao
@@ -116,7 +116,7 @@ void LivroRetira( ListaLivro* biblio, ListaAluno* alunos ) {
 
 	int indiceLivro = LivroBusca( biblio, &erroBusca );
 	if (erroBusca) {
-		printf("->  Falha na locacao de livro. Pressione ENTER para continuar");
+		printf("  -> Falha na locacao de livro. Pressione ENTER para continuar");
 		EsperaEnter();
 		return;
 	}
@@ -124,7 +124,7 @@ void LivroRetira( ListaLivro* biblio, ListaAluno* alunos ) {
 	// Caso nenhuma copia esteja disponivel para locacao
 	if ( biblio->Vetor[indiceLivro].Valor.Qnt == 0 ) {
 
-		printf("->  O livro %s esta cadastrado na biblioteca, porem nao esta disponivel para locacao. Deseja adicionar o aluno a fila de espera de locacao deste livro? (s/n)\n", biblio->Vetor[indiceLivro].Valor.Titulo );
+		printf("  -> O livro %s esta cadastrado na biblioteca, porem nao esta disponivel para locacao. Deseja adicionar o aluno a fila de espera de locacao deste livro? (s/n)\n", biblio->Vetor[indiceLivro].Valor.Titulo );
 	
 		// O usuario escolhe se ira adicionar o aluno na fila de espera ou cancelar a locacao	
 		LimpaBuffer();
@@ -135,7 +135,7 @@ void LivroRetira( ListaLivro* biblio, ListaAluno* alunos ) {
 		if( (opcao1 == 's') || (opcao1 == 'S') )
 			addFila = 1;
 		else {
-			printf("->  Operacao de locacao cancelada. Pressione ENTER para cotinuar.");
+			printf("  -> Operacao de locacao cancelada. Pressione ENTER para cotinuar.");
 			EsperaEnter();
 			return;
 		}
@@ -143,7 +143,7 @@ void LivroRetira( ListaLivro* biblio, ListaAluno* alunos ) {
 
 	else {		// Caso o livro esteja disponivel para locacao
 		printf("\n");
-		printf("->  O livro %s esta cadastrado na biblioteca e %d copias do mesmo estao disponiveis para locacao. Pressione ENTER para continuar.", biblio->Vetor[indiceLivro].Valor.Titulo, biblio->Vetor[indiceLivro].Valor.Qnt );
+		printf("  -> O livro %s esta cadastrado na biblioteca e %d copias do mesmo estao disponiveis para locacao. Pressione ENTER para continuar.", biblio->Vetor[indiceLivro].Valor.Titulo, biblio->Vetor[indiceLivro].Valor.Qnt );
 		EsperaEnter();
 	}
 	
@@ -151,7 +151,7 @@ void LivroRetira( ListaLivro* biblio, ListaAluno* alunos ) {
 	
 	int indiceAluno = AlunoBusca( alunos, &erroBusca );
 	if (erroBusca) {
-		printf("->  Falha na locacao de livro. Pressione ENTER para continuar");
+		printf(" -> Falha na locacao de livro. Pressione ENTER para continuar");
 		EsperaEnter();
 		return;
 	}
@@ -162,7 +162,7 @@ void LivroRetira( ListaLivro* biblio, ListaAluno* alunos ) {
 		int erroFila;
 		FilaEsperaInsere (&biblio->Vetor[indiceLivro].Valor.Espera, &alunos->Vetor[indiceAluno].Valor, &erroFila);
 		if (erroFila) {
-			printf("->  A fila de espera do livro %s esta cheia! O aluno nao sera adicionado a ela. Pressione ENTER para continuar.\n", biblio->Vetor[indiceLivro].Valor.Titulo );
+			printf("  -> A fila de espera do livro %s esta cheia! O aluno nao sera adicionado a ela. Pressione ENTER para continuar.\n", biblio->Vetor[indiceLivro].Valor.Titulo );
 			EsperaEnter();
 			return;
 		}
@@ -170,9 +170,9 @@ void LivroRetira( ListaLivro* biblio, ListaAluno* alunos ) {
 
 			// Envia uma mensagem para o aluno, informando que esta na fila de espera do livro
 
-			/* string mensagem;
+			/*
+			string mensagem;
 			sprintf( mensagem, "Voce agora esta na fila de espera para a locacao do livro %s, na posicao %d. Voce sera notificado quando o livro estiver disponivel para voce o alugar.", biblio->Vetor[indiceLivro].Valor.Titulo, biblio->Vetor[indiceLivro].Valor.Espera.Tam );
-			
 			int erroMsg;
 			PilhaMsgPush(&alunos->Vetor[indiceAluno].Valor.Mensagens, &mensagem, &erroMsg );
 			if (erroMsg) {
@@ -180,15 +180,16 @@ void LivroRetira( ListaLivro* biblio, ListaAluno* alunos ) {
 				printf("->  Comunique ao aluno para que o mesmo venha ler suas mensagens nao lidas o quanto antes!\n");
 				printf("->  Pressione ENTER para continuar.");
 				EsperaEnter();
-			} */
+			}
+			*/
 
 			// Fim da rotina
-			printf("->  O aluno %s agora esta no final da fila de espera para o livro. Pressione ENTER para continuar.", alunos->Vetor[indiceAluno].Valor.Nome );
+			printf("  -> O aluno %s agora esta no final da fila de espera para o livro. Pressione ENTER para continuar.", alunos->Vetor[indiceAluno].Valor.Nome );
 			EsperaEnter();
 		}
 	}
 	else {		// Caso a locacao ocorra, sem necessidade de utilizar a fila de espera
-		printf("->  O livro %s sera locado por %s. Prosseguir? (s/n): ", biblio->Vetor[indiceLivro].Valor.Titulo, alunos->Vetor[indiceAluno].Valor.Nome );
+		printf("  -> O livro %s sera locado por %s. Prosseguir? (s/n): ", biblio->Vetor[indiceLivro].Valor.Titulo, alunos->Vetor[indiceAluno].Valor.Nome );
 		LimpaBuffer();
 		char opcao2;
 		opcao2 = getchar();
@@ -199,10 +200,9 @@ void LivroRetira( ListaLivro* biblio, ListaAluno* alunos ) {
 			
 			// Envia uma mensagem para o aluno, informando que alugou o livro em questao
 			
+			/*
 			string mensagem;
-			
 			sprintf( mensagem, "Voce alugou o livro %s.", biblio->Vetor[indiceLivro].Valor.Titulo );
-			
 			int erroMsg;
 			PilhaMsgPush(&alunos->Vetor[indiceAluno].Valor.Mensagens, &mensagem, &erroMsg );
 			if (erroMsg) {
@@ -211,16 +211,17 @@ void LivroRetira( ListaLivro* biblio, ListaAluno* alunos ) {
 				printf("->  Pressione ENTER para continuar.");
 				EsperaEnter();
 			}
+			*/
 
 			// Reduz o numero de copias disponiveis do livro e aumenta o de alugadas no momento
 			biblio->Vetor[indiceLivro].Valor.Qnt--;
 			biblio->Vetor[indiceLivro].Valor.Loc++;
-			printf("->  Livro locado com sucesso. Agora, estao disponiveis %d copias do mesmo para locacao.\n", biblio->Vetor[indiceLivro].Valor.Qnt);
-			printf("->  Pressione ENTER para continuar.");
+			printf("  -> Livro locado com sucesso. Agora, estao disponiveis %d copias do mesmo para locacao.\n", biblio->Vetor[indiceLivro].Valor.Qnt);
+			printf("  -> Pressione ENTER para continuar.");
 			EsperaEnter();
 		}
 		else {		// Caso o usuario decida cancelar a operacao
-			printf("->  Operacao de locacao cancelada. Pressione ENTER para continuar.");
+			printf("  -> Operacao de locacao cancelada. Pressione ENTER para continuar.");
 			EsperaEnter();
 			return;
 		}
@@ -229,7 +230,7 @@ void LivroRetira( ListaLivro* biblio, ListaAluno* alunos ) {
 
 void LivroRetorna( ListaLivro* biblio, ListaAluno* alunos ) {
 	
-	printf("->  Devolucao de livro. E preciso o titulo do livro a ser devolvido e, depois, o Numero USP do aluno que o devolvera. Pressione ENTER para continuar.");
+	printf("  -> Devolucao de livro. E preciso o titulo do livro a ser devolvido e, depois, o Numero USP do aluno que o devolvera. Pressione ENTER para continuar.");
 	EsperaEnter();
 
 	// Busca o livro que sera devolvido
@@ -237,14 +238,14 @@ void LivroRetorna( ListaLivro* biblio, ListaAluno* alunos ) {
 
 	int indiceLivro = LivroBusca( biblio, &erroBusca );
 	if (erroBusca) {
-		printf("->  Falha na devolucao de livro. Pressione ENTER para continuar");
+		printf("  -> Falha na devolucao de livro. Pressione ENTER para continuar");
 		EsperaEnter();
 		return;
 	}
 
 	// Caso o livro nao esteja locado
 	if(biblio->Vetor[indiceLivro].Valor.Loc == 0) {
-		printf("->  O livro %s nao foi alugado! Pressione ENTER para continuar.\n", biblio->Vetor[indiceLivro].Valor.Titulo );
+		printf("  -> O livro %s nao foi alugado! Pressione ENTER para continuar.\n", biblio->Vetor[indiceLivro].Valor.Titulo );
 		EsperaEnter();
 		return;
 	}
@@ -252,13 +253,13 @@ void LivroRetorna( ListaLivro* biblio, ListaAluno* alunos ) {
 	// Busca o aluno que esta devolvendo o livro
 	int indiceAluno = AlunoBusca( alunos, &erroBusca );
 	if (erroBusca) {
-		printf("->  Falha na devolucao de livro. Pressione ENTER para continuar");
+		printf("  -> Falha na devolucao de livro. Pressione ENTER para continuar");
 		EsperaEnter();
 		return;
 	}
 
 	// Escolha do usuario
-	printf("->  O livro %s sera devolvido por %s. Prosseguir? (s/n)\n", biblio->Vetor[indiceLivro].Valor.Titulo, alunos->Vetor[indiceAluno].Valor.Nome );
+	printf("  -> O livro %s sera devolvido por %s. Prosseguir? (s/n)\n", biblio->Vetor[indiceLivro].Valor.Titulo, alunos->Vetor[indiceAluno].Valor.Nome );
 	LimpaBuffer();
 	char opcao = getchar();
 
@@ -266,9 +267,9 @@ void LivroRetorna( ListaLivro* biblio, ListaAluno* alunos ) {
 
 		// Envia uma mensagem ao aluno informando da devolucao do livro
 	
+		/*
 		string mensagem;
 		sprintf( mensagem, "Voce devolveu o livro %s.", biblio->Vetor[indiceLivro].Valor.Titulo );
-		
 		int erroMsg;
 		PilhaMsgPush(&alunos->Vetor[indiceAluno].Valor.Mensagens, &mensagem, &erroMsg );
 		if (erroMsg) {
@@ -277,6 +278,7 @@ void LivroRetorna( ListaLivro* biblio, ListaAluno* alunos ) {
 			printf("->  Pressione ENTER para continuar.");
 			EsperaEnter();
 		}
+		*/
 
 		// Aumenta o numero de copias disponiveis do livro e reduz o numero de copias que estao send alugadas
 		biblio->Vetor[indiceLivro].Valor.Qnt++;
@@ -289,8 +291,9 @@ void LivroRetorna( ListaLivro* biblio, ListaAluno* alunos ) {
 		if (!erroFila) {	// Caso andar a fila nao retorne erro, significa que a fila de espera nao esta vazia
 
 			// Envia a mensagem ao proximo aluno da fila de espera, para que o mesmo venha o alugar
+
+			/*
 			sprintf( mensagem, "O livro %s agora esta disponivel para voce o locar. Venha o quanto antes.", biblio->Vetor[indiceLivro].Valor.Titulo );
-			
 			PilhaMsgPush(&ProximoFila->Mensagens, &mensagem, &erroMsg );
 			if (erroMsg) {
 				printf("->  A caixa de mensagens deste aluno esta cheia e ele nao sera notificado da operacao.\n");
@@ -298,17 +301,18 @@ void LivroRetorna( ListaLivro* biblio, ListaAluno* alunos ) {
 				printf("->  Pressione ENTER para continuar.");
 				EsperaEnter();
 			}
+			*/
 
 		}
 		// Caso a fila de espera esteja vazia, nao é preciso fazer nada.
 
-		printf("->  Livro devolvido com sucesso. Pressione ENTER para continuar.");
+		printf("  -> Livro devolvido com sucesso. Pressione ENTER para continuar.");
 		EsperaEnter();
 		return;
 	}
 
 	else {		// Caso o usuario cancele a operacao
-		printf("->  Operacao de devolucao cancelada. Pressione ENTER para continuar.");
+		printf("  -> Operacao de devolucao cancelada. Pressione ENTER para continuar.");
 		EsperaEnter();
 		return;
 	}
@@ -320,7 +324,7 @@ int LivroBusca( ListaLivro* biblio, int * erro ) {
 
 	// Caso a biblioteca esteja vazia
 	if( ListaLivroEstaVazia( biblio ) ) {
-		printf("->  Operacao invalida. A biblioteca esta vazia!" );
+		printf("  -> Operacao invalida. A biblioteca esta vazia!" );
 		printf("\n");
 		
 		*erro = 1;
@@ -328,7 +332,7 @@ int LivroBusca( ListaLivro* biblio, int * erro ) {
 	}
 
 	// O usuario entra com o titulo do livro que deseja buscar
-	printf("->  Digite o titulo do livro desejado: ");
+	printf("  -> Digite o titulo do livro desejado: ");
 	string find;
 	StringLe( find );
 
@@ -348,8 +352,8 @@ int LivroBusca( ListaLivro* biblio, int * erro ) {
 	/* Pergunta ao usuario se deseja que sejam impressos na tela todos os livros
 	 que contem o texto digitado em seu titulo, caso o usuario tenha esquecido como
 	 o titulo do livro esta armazenado na biblioteca */
-	printf("\n->  Livro nao encontrado! Tente rever a digitacao.\n->  Atencao: o texto digitado dever ser exatemente igual ao titulo do livro procurado!\n" );
-	printf("->  Exibir livros cujo titulo contem o texto digitado? (s/n): ");
+	printf("\n  -> Livro nao encontrado! Tente rever a digitacao.\n->  Atencao: o texto digitado dever ser exatemente igual ao titulo do livro procurado!\n" );
+	printf("  -> Exibir livros cujo titulo contem o texto digitado? (s/n): ");
 	
 	LimpaBuffer();
 	char opcao;
@@ -360,13 +364,13 @@ int LivroBusca( ListaLivro* biblio, int * erro ) {
 		
 		// Caso o usuario escolha SIM
 
-		printf("->  Livros que contem '%s' no titulo: \n\n", find );
+		printf(" -> Livros que contem '%s' no titulo: \n\n", find );
 
 		for ( i = biblio->Primeiro ; i != -1 ; i = biblio->Vetor[i].Proximo )
 			if ( strstr( biblio->Vetor[i].Valor.Titulo, find ) )
 				PrintaLivro( &biblio->Vetor[i].Valor );
 
-		printf("Pressione ENTER para continuar.");
+		printf("  -> Pressione ENTER para continuar.");
 		EsperaEnter();
 	}
 
@@ -382,7 +386,7 @@ void InicializaAlunos ( ListaAluno * alunos ) {
 
 void AlunoCadastra( ListaAluno* alunos ) {
 
-	printf("->  Cadastramento de um aluno novo. Pressione ENTER para continuar.");
+	printf("  -> Cadastramento de um aluno novo. Pressione ENTER para continuar.");
 	EsperaEnter();
 
 	string NomeAux;
@@ -400,7 +404,7 @@ void AlunoCadastra( ListaAluno* alunos ) {
 		int i;
 		for ( i = alunos->Primeiro ; i != -1 ; i = alunos->Vetor[i].Proximo ) {
 			if ( !strcmp( alunos->Vetor[i].Valor.Nusp, NuspAux ) ) {
-				printf("->  Operacao invalida. O aluno %s ja esta cadastrado. Pressione ENTER para continuar.", NomeAux );
+				printf("\n  -> Operacao invalida. O aluno %s ja esta cadastrado. Pressione ENTER para continuar.", NomeAux );
 				EsperaEnter();
 				return;
 			}
@@ -421,17 +425,18 @@ void AlunoCadastra( ListaAluno* alunos ) {
 	ListaAlunoInsere(alunos, NomeAux, NuspAux, TelAux, EmailAux, &erro);
 	
 	if( erro ) {
-		printf("->  Falha no cadastramento de aluno! O sistema esta cheio. Pressione ENTER para continuar.");
+		printf("\n  -> Falha no cadastramento de aluno! O sistema esta cheio. Pressione ENTER para continuar.");
 		EsperaEnter();
 	}
 	else {
-		printf("->  Cadastramento de aluno concluido com sucesso. Pressione ENTER para continuar.");
+		printf("\n  -> Cadastramento de aluno concluido com sucesso. Pressione ENTER para continuar.");
 		EsperaEnter();
 	}
 
 	// Envia a mensagem de boas vindas ao aluno
-	string mensagem;
 
+	/*
+	string mensagem;
 	int erroMsg;
 	sprintf( mensagem, "Bem vindo ao sistema de biblioteca, %s!", NomeAux );
 	PilhaMsgPush(&alunos->Vetor[alunos->Ultimo].Valor.Mensagens, &mensagem, &erroMsg );
@@ -441,12 +446,13 @@ void AlunoCadastra( ListaAluno* alunos ) {
 		printf("->  Pressione ENTER para continuar.");
 		EsperaEnter();
 	}
+	*/
 
 }
 
 void AlunoRemove( ListaAluno* alunos ) {
 	
-	printf("->  Descadastramento de um aluno. Pressione ENTER para continuar.");
+	printf("  -> Descadastramento de um aluno. Pressione ENTER para continuar.");
 	EsperaEnter();
 
 	// Procura o aluno a ser removido
@@ -456,7 +462,7 @@ void AlunoRemove( ListaAluno* alunos ) {
 	printf("\n");
 
 	if (erroBusca) {	// Caso a busca falhe
-		printf("->  Falha no descadastramento do aluno. Pressione ENTER para continuar.");
+		printf(" -> Falha no descadastramento do aluno. Pressione ENTER para continuar.");
 		EsperaEnter();
 	}
 	else {		// Caso o aluno seja encontrado
@@ -465,11 +471,11 @@ void AlunoRemove( ListaAluno* alunos ) {
 		ListaAlunoRemove ( alunos, indice, &erroRemove );
 	
 		if (erroRemove) {
-			printf("->  Falha no descadastramento. Nao ha alunos cadastrados. Pressione ENTER para continuar.");
+			printf("  -> Falha no descadastramento. Nao ha alunos cadastrados. Pressione ENTER para continuar.");
 			EsperaEnter();
 		}
 		else {
-			printf("->  Aluno descadastrado com sucesso. Pressione ENTER para continuar.");
+			printf("  -> Aluno descadastrado com sucesso. Pressione ENTER para continuar.");
 			EsperaEnter();
 		}
 	}
@@ -480,7 +486,7 @@ int AlunoBusca( ListaAluno* alunos, int * erro ) {
 
 	// Caso a biblioteca esteja vazia
 	if( ListaAlunoEstaVazia( alunos ) ) {
-		printf("->  Operacao invalida. Nenhum aluno esta cadastrado!" );
+		printf("  -> Operacao invalida. Nenhum aluno esta cadastrado!" );
 		printf("\n");
 		
 		*erro = 1;
@@ -488,7 +494,7 @@ int AlunoBusca( ListaAluno* alunos, int * erro ) {
 	}
 
 	// O usuario entra com o numero  usp do aluno que deseja buscar
-	printf("->  Digite o Numero USP do aluno desejado: ");
+	printf("  -> Digite o Numero USP do aluno desejado: ");
 	string find;
 	StringLe( find );
 
@@ -508,8 +514,8 @@ int AlunoBusca( ListaAluno* alunos, int * erro ) {
 	/* Pergunta ao usuario se deseja que sejam impressos na tela todos os alunos
 	 e seus numeros usp, caso o usuario tenha esquecido o numero usp do aluno que
 	 deseja encontrar */
-	printf("\n->  Aluno nao encontrado!\n");
-	printf("->  Exibir todos os alunos e seus respectivos Numeros USP? (s/n): ");
+	printf("\n  -> Aluno nao encontrado!\n");
+	printf("  -> Exibir todos os alunos e seus respectivos Numeros USP? (s/n): ");
 	
 	LimpaBuffer();
 	char opcao;
@@ -520,12 +526,12 @@ int AlunoBusca( ListaAluno* alunos, int * erro ) {
 		
 		// Caso o usuario escolha SIM
 
-		printf("->  Todos os alunos e seus respectivos Numeros USP: \n\n");
+		printf("  -> Todos os alunos e seus respectivos Numeros USP: \n\n");
 
 		for ( i = alunos->Primeiro ; i != -1 ; i = alunos->Vetor[i].Proximo )
 			PrintaNUSPAluno( &alunos->Vetor[i].Valor );
 
-		printf("Pressione ENTER para continuar.");
+		printf("  -> Pressione ENTER para continuar.");
 		EsperaEnter();
 	}
 
