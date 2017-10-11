@@ -13,7 +13,7 @@
 int main() {
 
 	//####################################################
-    // Declaracao Dinamica: comente para a versao Estatica
+    	// Declaracao Dinamica: comente para a versao Estatica
 
 	
 	ListaLivro* Biblioteca;
@@ -36,13 +36,13 @@ int main() {
 	//####################################################
 	// Declaracao Estatica, comente para a versao Dinamica:
 
-	
+	/*
 	ListaLivro Biblioteca[100];
 	InicializaBiblio( Biblioteca );
 
 	ListaAluno Alunos[100];
 	InicializaAlunos( Alunos );
-	
+	*/
 
 	//####################################################
 	// Inicio do codigo:
