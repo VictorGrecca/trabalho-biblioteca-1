@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdio_ext.h>
+// #include <stdio_ext.h> // Retire o comentario desta linha caso rode o programa no linux
 #include "String_Dinamico.h"
 
 string StringLe() {
@@ -37,6 +37,5 @@ void LimpaBuffer() {
 	/* Uma das funcoes limpa o buffer no Windows e o outro no Linux,
 	 portanto, usamos ambas para portabilidade */
 	fflush(stdin);
-	__fpurge(stdin);
-
+	//__fpurge(stdin); // Retire o comentario desta linha caso rode o programa no linux
 }
