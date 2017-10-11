@@ -14,7 +14,7 @@ void PrintaAluno ( Aluno * this ) {
 
 void PrintaNUSPAluno ( Aluno * this ) {
 
-	printf("\tAluno: %s, \n\t  Numero USP: %s\n\n", this->Nome, this->Nusp);
+	printf("\tAluno: %s\n\t  Numero USP: %s\n\n", this->Nome, this->Nusp);
 }
 
 void PrintaMensagens ( Aluno * this ) {
