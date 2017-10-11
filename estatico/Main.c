@@ -4,7 +4,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <stdio_ext.h>
+// #include <stdio_ext.h> // Retire o comentario desta linha caso rode o programa no linux
 
 //#include "Biblioteca_Dinamico.h"
 
